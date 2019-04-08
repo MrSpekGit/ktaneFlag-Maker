@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Name: ModConfig
   m_EditorClassIdentifier: 
   id: flagMaker
-  title: Flag Maker
+  title: Vexillology
   author: MrSpekCraft
-  description: "FlagMaker\nWhat did one flag say to the other flag? Nothing. It just
-    waved.\n\nSubmit the right flag by following the written steps. Maybe your own
-    flag will come up...\n\r\nMany thanks to SL7205 and Royal_Flu$h for helping me
-    out with tutorials online.\r\n\r\nModule: _ _ _\n\r\nMade by: MrSpekCraft"
-  version: 1.0
+  description: "Vexillology\nWhat did one flag say to the other flag? Nothing. It
+    just waved.\n\nSubmit the right flag by following the written steps. Maybe your
+    own flag will come up...\n\r\nMany thanks to SL7205 and Royal_Flu$h for helping
+    me out with tutorials online.\r\nMany thanks to MrMelon for testing and giving
+    feedback on the module!\n\r\nModule: https://ktane.timwi.de/HTML/Vexillology.html#1\n\r\nMade
+    by: MrSpekCraft"
+  version: 1.1
   outputFolder: build
   previewImage: {fileID: 2800000, guid: 80c082076e8cb654290b3315401ed7fa, type: 3}

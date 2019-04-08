@@ -1056,7 +1056,7 @@ GameObject:
   - component: {fileID: 114271357046617832}
   - component: {fileID: 114602303092930720}
   m_Layer: 0
-  m_Name: flagMaker
+  m_Name: vexillology
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2608,7 +2608,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1149634117830590}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.05953, y: 0.0223, z: -0.03247}
+  m_LocalPosition: {x: -0.05953, y: 0.0223, z: -0.03246}
   m_LocalScale: {x: 0.01, y: 0.05, z: 0.010000011}
   m_Children: []
   m_Father: {fileID: 4367894646881652}
@@ -5873,7 +5873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ModuleType: flagMaker
-  ModuleDisplayName: Flag Maker
+  ModuleDisplayName: Vexillology
   RequiresTimerVisibility: 1
 --- !u!114 &114532712213916290
 MonoBehaviour:

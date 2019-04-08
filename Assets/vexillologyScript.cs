@@ -5,8 +5,9 @@ using System.Linq;
 using UnityEngine;
 using Newtonsoft.Json;
 using KModkit;
+using System.Text.RegularExpressions;
 
-public class flagMakerScript : MonoBehaviour 
+public class vexillologyScript : MonoBehaviour 
 {
 	public KMBombInfo Bomb;
 	public KMAudio Audio;
@@ -856,5 +857,168 @@ public class flagMakerScript : MonoBehaviour
 			yield return new WaitForSeconds(3f);
 		}
 		FlagTopSubmitRen.material = butColour[8];
+	}
+
+	#pragma warning disable 414
+	private string TwitchHelpMessage = @"Submit the flag with “!{0} submit on 5”. Fill a colour of the flag with “!{0} fill colour 1 red” or “!{0} fill 3 yellow”.";
+	#pragma warning restore 414
+
+	private IEnumerator ProcessTwitchCommand(string inputCommand)
+	{
+		int final = 0;
+		Regex rgx1 = new Regex(@"^(press|submit) (at|on|with) [0-9]$");
+		Regex rgx2 = new Regex(@"^(fill) (colour|color) [1-3] (red|orange|yellow|green|blue|aqua|white|black)$");
+		Regex rgx3 = new Regex(@"^(fill) [1-3] (red|orange|yellow|green|blue|aqua|white|black)$");
+		if (rgx2.IsMatch(inputCommand)) 
+		{
+			var commands = inputCommand.ToLowerInvariant().Split(new[] { ' ' }, 4, StringSplitOptions.RemoveEmptyEntries);
+
+			if (commands[3]=="red"){
+				ActiveColour = 0;
+			} else if (commands[3]=="orange"){
+				ActiveColour = 1;
+			} else if (commands[3]=="green"){
+				ActiveColour = 2;
+			} else if (commands[3]=="yellow"){
+				ActiveColour = 3;
+			} else if (commands[3]=="blue"){
+				ActiveColour = 4;
+			} else if (commands[3]=="aqua"){
+				ActiveColour = 5;
+			} else if (commands[3]=="white"){
+				ActiveColour = 6;
+			} else if (commands[3]=="black"){
+				ActiveColour = 7;
+			}
+			
+			string result = commands [2];
+
+			if (ActiveFlag == 0)
+			{
+				if (Int32.TryParse(result, out final))
+				{
+					int finalII = final - 1;
+					PressedHorzFlag (finalII);
+				}
+			} 
+			else if (ActiveFlag == 1)
+			{
+				if (Int32.TryParse(result, out final))
+				{
+					int finalII = final - 1;
+					PressedVertFlag (finalII);
+				}
+			} 
+			else if (ActiveFlag == 2)
+			{
+				if (Int32.TryParse(result, out final))
+				{
+					int finalII = final - 1;
+
+					if (final == 1){
+						PressedSweFlag (finalII);
+					} else {
+						finalII = 4;
+						PressedSweFlag (finalII);
+					}
+				}
+			} 
+			else
+			{
+				if (Int32.TryParse(result, out final))
+				{
+					int finalII = final - 1;
+					if (final == 1){
+						PressedSweFlag (finalII);
+					} else if (final == 2){
+						finalII = 4;
+						PressedSweFlag (finalII);
+					} else {
+						finalII = 6;
+						PressedNorFlag (finalII);
+					}
+				}
+			}
+		} else if (rgx3.IsMatch(inputCommand)) 
+		{
+			var commands = inputCommand.ToLowerInvariant().Split(new[] { ' ' }, 3, StringSplitOptions.RemoveEmptyEntries);
+
+			if (commands[2]=="red"){
+				ActiveColour = 0;
+			} else if (commands[2]=="orange"){
+				ActiveColour = 1;
+			} else if (commands[2]=="green"){
+				ActiveColour = 2;
+			} else if (commands[2]=="yellow"){
+				ActiveColour = 3;
+			} else if (commands[2]=="blue"){
+				ActiveColour = 4;
+			} else if (commands[2]=="aqua"){
+				ActiveColour = 5;
+			} else if (commands[2]=="white"){
+				ActiveColour = 6;
+			} else if (commands[2]=="black"){
+				ActiveColour = 7;
+			}
+			
+			string result = commands [1];
+
+			if (ActiveFlag == 0)
+			{
+				if (Int32.TryParse(result, out final))
+				{
+					int finalII = final - 1;
+					PressedHorzFlag (finalII);
+				}
+			} 
+			else if (ActiveFlag == 1)
+			{
+				if (Int32.TryParse(result, out final))
+				{
+					int finalII = final - 1;
+					PressedVertFlag (finalII);
+				}
+			} 
+			else if (ActiveFlag == 2)
+			{
+				if (Int32.TryParse(result, out final))
+				{
+					int finalII = final - 1;
+
+					if (final == 1){
+						PressedSweFlag (finalII);
+					} else {
+						finalII = 4;
+						PressedSweFlag (finalII);
+					}
+				}
+			} 
+			else
+			{
+				if (Int32.TryParse(result, out final))
+				{
+					int finalII = final - 1;
+					if (final == 1){
+						PressedSweFlag (finalII);
+					} else if (final == 2){
+						finalII = 4;
+						PressedSweFlag (finalII);
+					} else {
+						finalII = 6;
+						PressedNorFlag (finalII);
+					}
+				}
+			}
+		}
+		else if (rgx1.IsMatch(inputCommand))
+		{
+			var commands = inputCommand.ToLowerInvariant().Split(new[] { ' ' }, 3, StringSplitOptions.RemoveEmptyEntries);
+
+			while(!Bomb.GetFormattedTime().Contains(commands[2]))
+			{
+					yield return new WaitForSeconds(.1f);
+			}
+			PressedSubmit();
+		}
 	}
 }
