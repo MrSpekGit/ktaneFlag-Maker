@@ -20,6 +20,6 @@ MonoBehaviour:
     me out with tutorials online.\r\nMany thanks to MrMelon for testing and giving
     feedback on the module!\n\r\nModule: https://ktane.timwi.de/HTML/Vexillology.html#1\n\r\nMade
     by: MrSpekCraft"
-  version: 1.2.1
+  version: 1.3
   outputFolder: build
   previewImage: {fileID: 2800000, guid: 80c082076e8cb654290b3315401ed7fa, type: 3}

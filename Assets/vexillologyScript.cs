@@ -897,46 +897,54 @@ public class vexillologyScript : MonoBehaviour
 			{
 				if (Int32.TryParse(result, out final))
 				{
+					yield return null;
 					int finalII = final - 1;
-					PressedHorzFlag (finalII);
+					HorizontalFlag [finalII].OnInteract();
+					yield return new WaitForSeconds(.1f);
 				}
 			} 
 			else if (ActiveFlag == 1)
 			{
 				if (Int32.TryParse(result, out final))
 				{
+					yield return null;
 					int finalII = final - 1;
-					PressedVertFlag (finalII);
+					VerticalFlag [finalII].OnInteract();
+					yield return new WaitForSeconds(.1f);
 				}
 			} 
 			else if (ActiveFlag == 2)
 			{
 				if (Int32.TryParse(result, out final))
 				{
+					yield return null;
 					int finalII = final - 1;
 
 					if (final == 1){
-						PressedSweFlag (finalII);
+						SwedishFlag [finalII].OnInteract();
 					} else {
 						finalII = 4;
-						PressedSweFlag (finalII);
+						SwedishFlag [finalII].OnInteract();
 					}
+					yield return new WaitForSeconds(.1f);
 				}
 			} 
 			else
 			{
 				if (Int32.TryParse(result, out final))
 				{
+					yield return null;
 					int finalII = final - 1;
 					if (final == 1){
-						PressedSweFlag (finalII);
+						NorwegianFlag [finalII].OnInteract();
 					} else if (final == 2){
 						finalII = 4;
-						PressedSweFlag (finalII);
+						NorwegianFlag [finalII].OnInteract();
 					} else {
 						finalII = 6;
-						PressedNorFlag (finalII);
+						NorwegianFlag [finalII].OnInteract();
 					}
+					yield return new WaitForSeconds(.1f);
 				}
 			}
 		} else if (rgx3.IsMatch(inputCommand)) 
@@ -967,46 +975,54 @@ public class vexillologyScript : MonoBehaviour
 			{
 				if (Int32.TryParse(result, out final))
 				{
+					yield return null;
 					int finalII = final - 1;
-					PressedHorzFlag (finalII);
+					HorizontalFlag [finalII].OnInteract();
+					yield return new WaitForSeconds(.1f);
 				}
 			} 
 			else if (ActiveFlag == 1)
 			{
 				if (Int32.TryParse(result, out final))
 				{
+					yield return null;
 					int finalII = final - 1;
-					PressedVertFlag (finalII);
+					VerticalFlag [finalII].OnInteract();
+					yield return new WaitForSeconds(.1f);
 				}
 			} 
 			else if (ActiveFlag == 2)
 			{
 				if (Int32.TryParse(result, out final))
 				{
+					yield return null;
 					int finalII = final - 1;
 
 					if (final == 1){
-						PressedSweFlag (finalII);
+						SwedishFlag [finalII].OnInteract();
 					} else {
 						finalII = 4;
-						PressedSweFlag (finalII);
+						SwedishFlag [finalII].OnInteract();
 					}
+					yield return new WaitForSeconds(.1f);
 				}
 			} 
 			else
 			{
 				if (Int32.TryParse(result, out final))
 				{
+					yield return null;
 					int finalII = final - 1;
 					if (final == 1){
-						PressedSweFlag (finalII);
+						NorwegianFlag [finalII].OnInteract();
 					} else if (final == 2){
 						finalII = 4;
-						PressedSweFlag (finalII);
+						NorwegianFlag [finalII].OnInteract();
 					} else {
 						finalII = 6;
-						PressedNorFlag (finalII);
+						NorwegianFlag [finalII].OnInteract();
 					}
+					yield return new WaitForSeconds(.1f);
 				}
 			}
 		}
@@ -1018,7 +1034,9 @@ public class vexillologyScript : MonoBehaviour
 			{
 					yield return new WaitForSeconds(.1f);
 			}
-			PressedSubmit();
+			yield return null;
+			FlagTopSubmit.OnInteract();
+			yield return new WaitForSeconds(.1f);
 		}
 	}
 }
