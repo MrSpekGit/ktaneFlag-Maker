@@ -735,7 +735,7 @@ public class vexillologyScript : MonoBehaviour
 
 		if (!_issolved){
 			Debug.LogFormat ("[Vexillology #{0}] = = = = = = = = =", moduleId);
-			if (ActiveFlag == 2){
+			if (ActiveFlag == 2 && FlagColour1 != 10 && FlagColour2 != 10){
 				Debug.LogFormat ("[Vexillology #{0}] The submitted flag was {1} and {2} at {3}", moduleId, coloursStrings[FlagColour1], coloursStrings[FlagColour2], Time.ToString());
 				if (SubmitTime != 10){
 					Debug.LogFormat ("[Vexillology #{0}] Submit Time must include {1}", moduleId, SubmitTime.ToString());
@@ -776,7 +776,7 @@ public class vexillologyScript : MonoBehaviour
 						}
 					}
 				}
-			} else {
+			} else if (FlagColour1 != 10 && FlagColour2 != 10 && FlagColour3 != 10){
 				Debug.LogFormat ("[Vexillology #{0}] The submitted flag was {1}, {2} and {3} at {4}", moduleId, coloursStrings[FlagColour1], coloursStrings[FlagColour2], coloursStrings[FlagColour3], Time.ToString());
 				if (_ChadRomania){
 					Debug.LogFormat ("[Vexillology #{0}] Submit Time must include 0 or 5", moduleId);
@@ -837,6 +837,9 @@ public class vexillologyScript : MonoBehaviour
 						}
 					}
 				}
+			} else {
+				Debug.LogFormat ("[Vexillology #{0}] Strike! Grey Colours present.", moduleId);
+				GetComponent<KMBombModule>().HandleStrike();
 			}
 		}
 	}
