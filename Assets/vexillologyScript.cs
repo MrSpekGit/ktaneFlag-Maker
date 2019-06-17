@@ -329,7 +329,7 @@ public class vexillologyScript : MonoBehaviour
 		} else if (colourSerialMatch && PS2Present && !TwoorMoreIncPresent && !LastDigit5orBigger){
 			AnswerColour2 = 2;
 		} else if (!colourSerialMatch && PS2Present && !TwoorMoreIncPresent && LastDigit5orBigger){
-			AnswerColour2 = 6;
+			AnswerColour2 = 7;
 		} else if (colourSerialMatch && PS2Present && TwoorMoreIncPresent && !LastDigit5orBigger){
 			AnswerColour2 = 3;
 		} else if (colourSerialMatch && PS2Present && !TwoorMoreIncPresent && LastDigit5orBigger){
@@ -390,7 +390,7 @@ public class vexillologyScript : MonoBehaviour
 		} else if (colourSerialMatch && PS2Present && !TwoorMoreIncPresent && !LastDigit5orBigger){
 			AnswerColour3 = 2;
 		} else if (!colourSerialMatch && PS2Present && !TwoorMoreIncPresent && LastDigit5orBigger){
-			AnswerColour3 = 6;
+			AnswerColour3 = 7;
 		} else if (colourSerialMatch && PS2Present && TwoorMoreIncPresent && !LastDigit5orBigger){
 			AnswerColour3 = 3;
 		} else if (colourSerialMatch && PS2Present && !TwoorMoreIncPresent && LastDigit5orBigger){

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: Default
   m_EditorClassIdentifier: 
   SerialNumberType: 2
-  CustomSerialNumber: DB1DB1
+  CustomSerialNumber: PP3PP2
   TwoFactorResetTime: 30
   Widgets: []
