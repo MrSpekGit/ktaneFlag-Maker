@@ -329,7 +329,7 @@ public class vexillologyScript : MonoBehaviour
 		} else if (colourSerialMatch && PS2Present && !TwoorMoreIncPresent && !LastDigit5orBigger){
 			AnswerColour2 = 2;
 		} else if (!colourSerialMatch && PS2Present && !TwoorMoreIncPresent && LastDigit5orBigger){
-			AnswerColour2 = 7;
+			AnswerColour2 = 4;
 		} else if (colourSerialMatch && PS2Present && TwoorMoreIncPresent && !LastDigit5orBigger){
 			AnswerColour2 = 3;
 		} else if (colourSerialMatch && PS2Present && !TwoorMoreIncPresent && LastDigit5orBigger){
@@ -390,7 +390,7 @@ public class vexillologyScript : MonoBehaviour
 		} else if (colourSerialMatch && PS2Present && !TwoorMoreIncPresent && !LastDigit5orBigger){
 			AnswerColour3 = 2;
 		} else if (!colourSerialMatch && PS2Present && !TwoorMoreIncPresent && LastDigit5orBigger){
-			AnswerColour3 = 7;
+			AnswerColour3 = 4;
 		} else if (colourSerialMatch && PS2Present && TwoorMoreIncPresent && !LastDigit5orBigger){
 			AnswerColour3 = 3;
 		} else if (colourSerialMatch && PS2Present && !TwoorMoreIncPresent && LastDigit5orBigger){
@@ -732,6 +732,8 @@ public class vexillologyScript : MonoBehaviour
 
 	void PressedSubmit(){
 		string Time = Bomb.GetFormattedTime();
+		float Time2 = Bomb.GetTime();
+		string TimeX = Time.Remove(2);
 
 		if (!_issolved){
 			Debug.LogFormat ("[Vexillology #{0}] = = = = = = = = =", moduleId);
@@ -739,7 +741,7 @@ public class vexillologyScript : MonoBehaviour
 				Debug.LogFormat ("[Vexillology #{0}] The submitted flag was {1} and {2} at {3}", moduleId, coloursStrings[FlagColour1], coloursStrings[FlagColour2], Time.ToString());
 				if (SubmitTime != 10){
 					Debug.LogFormat ("[Vexillology #{0}] Submit Time must include {1}", moduleId, SubmitTime.ToString());
-					if (FlagColour1 == AnswerColour1 && FlagColour2 == AnswerColour2 && Time.Contains(SubmitTime.ToString())){
+					if (FlagColour1 == AnswerColour1 && FlagColour2 == AnswerColour2 && ((Time2 <= 60 && TimeX.Contains(SubmitTime.ToString())) || (Time2 > 60 && Time.Contains(SubmitTime.ToString())))){
 						if (AnthemNumber == 100){
 							Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.CorrectChime, transform);
 						} else {
@@ -758,7 +760,7 @@ public class vexillologyScript : MonoBehaviour
 					}
 				} else {
 					Debug.LogFormat ("[Vexillology #{0}] Submit Time must include {1}", moduleId, Bomb.GetSerialNumberNumbers().Last().ToString());
-					if (FlagColour1 == AnswerColour1 && FlagColour2 == AnswerColour2 && Time.Contains( Bomb.GetSerialNumberNumbers().Last().ToString())){
+					if (FlagColour1 == AnswerColour1 && FlagColour2 == AnswerColour2 && ((Time2 <= 60 && TimeX.Contains( Bomb.GetSerialNumberNumbers().Last().ToString())) || (Time2 > 60 &&Time.Contains( Bomb.GetSerialNumberNumbers().Last().ToString())))){
 						if (AnthemNumber == 100){
 							Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.CorrectChime, transform);
 						} else {
@@ -780,7 +782,7 @@ public class vexillologyScript : MonoBehaviour
 				Debug.LogFormat ("[Vexillology #{0}] The submitted flag was {1}, {2} and {3} at {4}", moduleId, coloursStrings[FlagColour1], coloursStrings[FlagColour2], coloursStrings[FlagColour3], Time.ToString());
 				if (_ChadRomania){
 					Debug.LogFormat ("[Vexillology #{0}] Submit Time must include 0 or 5", moduleId);
-					if (FlagColour1 == AnswerColour1 && FlagColour2 == AnswerColour2 && FlagColour3 == AnswerColour3 && (Time.Contains("5") || Time.Contains("0"))){
+					if (FlagColour1 == AnswerColour1 && FlagColour2 == AnswerColour2 && FlagColour3 == AnswerColour3 && ((Time2 <= 60 && (Time.Contains("5") || Time.Contains("0")) || (Time2 > 60 && (Time.Contains("5") || Time.Contains("0")))))){
 						if (AnthemNumber == 100){
 							Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.CorrectChime, transform);
 						} else {
@@ -800,7 +802,7 @@ public class vexillologyScript : MonoBehaviour
 					}
 				} else if (SubmitTime != 10){
 					Debug.LogFormat ("[Vexillology #{0}] Submit Time must include {1}", moduleId, SubmitTime.ToString());
-					if (FlagColour1 == AnswerColour1 && FlagColour2 == AnswerColour2 && FlagColour3 == AnswerColour3 && Time.Contains(SubmitTime.ToString())){
+					if (FlagColour1 == AnswerColour1 && FlagColour2 == AnswerColour2 && FlagColour3 == AnswerColour3 && ((Time2 <= 60 && TimeX.Contains(SubmitTime.ToString())) || (Time2 > 60 && Time.Contains(SubmitTime.ToString())))){
 						if (AnthemNumber == 100){
 							Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.CorrectChime, transform);
 						} else {
@@ -819,7 +821,7 @@ public class vexillologyScript : MonoBehaviour
 					}
 				} else {
 					Debug.LogFormat ("[Vexillology #{0}] Submit Time must include {1}", moduleId, Bomb.GetSerialNumberNumbers().Last().ToString());
-					if (FlagColour1 == AnswerColour1 && FlagColour2 == AnswerColour2 && FlagColour3 == AnswerColour3 && Time.Contains( Bomb.GetSerialNumberNumbers().Last().ToString())){
+					if (FlagColour1 == AnswerColour1 && FlagColour2 == AnswerColour2 && FlagColour3 == AnswerColour3 && ((Time2 <= 60 && TimeX.Contains( Bomb.GetSerialNumberNumbers().Last().ToString())) || (Time2 > 60 &&Time.Contains( Bomb.GetSerialNumberNumbers().Last().ToString())))){
 						if (AnthemNumber == 100){
 							Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.CorrectChime, transform);
 						} else {
@@ -1031,15 +1033,36 @@ public class vexillologyScript : MonoBehaviour
 		}
 		else if (rgx1.IsMatch(inputCommand))
 		{
+			int Time2 = (int)Math.Floor(Bomb.GetTime());
+			string Time = Bomb.GetFormattedTime();
+			string TimeX = Time.Remove(2);
 			var commands = inputCommand.ToLowerInvariant().Split(new[] { ' ' }, 3, StringSplitOptions.RemoveEmptyEntries);
 
-			while(!Bomb.GetFormattedTime().Contains(commands[2]))
+			while ((!Bomb.GetFormattedTime().Contains(commands[2])) && (Time2 > 60))
 			{
-					yield return new WaitForSeconds(.1f);
+				Time2 = (int)Math.Floor(Bomb.GetTime());
+				yield return new WaitForSeconds(.01f);
 			}
+
+			if (Bomb.GetFormattedTime().Contains(commands[2]) && (Time2 > 60))
+			{
+				FlagTopSubmit.OnInteract();
+			}
+
+			while ((!Bomb.GetFormattedTime().Remove(2).Contains(commands[2])) && (Time2 <= 60))
+			{
+				Time2 = (int)Math.Floor(Bomb.GetTime());
+				yield return new WaitForSeconds(.01f);
+			}
+
+			if ((Bomb.GetFormattedTime().Remove(2).Contains(commands[2])) && (Time2 <= 60))
+			{
+				yield return null;
+				FlagTopSubmit.OnInteract();
+				yield return new WaitForSeconds(.1f);
+			}
+
 			yield return null;
-			FlagTopSubmit.OnInteract();
-			yield return new WaitForSeconds(.1f);
 		}
 	}
 }
