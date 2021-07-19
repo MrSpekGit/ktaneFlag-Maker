@@ -1065,4 +1065,92 @@ public class vexillologyScript : MonoBehaviour
 			yield return null;
 		}
 	}
+
+	private IEnumerator TwitchHandleForcedSolve()
+    {
+		if (AnswerColour1 != FlagColour1)
+		{
+			if (ActiveColour != AnswerColour1)
+			{
+				ColourButtons[AnswerColour1].OnInteract();
+				yield return new WaitForSeconds(.1f);
+			}
+			switch (ActiveFlag)
+			{
+				case 0:
+					HorizontalFlag[0].OnInteract();
+					yield return new WaitForSeconds(.1f);
+					break;
+				case 1:
+					VerticalFlag[0].OnInteract();
+					yield return new WaitForSeconds(.1f);
+					break;
+				case 2:
+					SwedishFlag[UnityEngine.Random.Range(0, 4)].OnInteract();
+					yield return new WaitForSeconds(.1f);
+					break;
+				default:
+					NorwegianFlag[UnityEngine.Random.Range(0, 4)].OnInteract();
+					yield return new WaitForSeconds(.1f);
+					break;
+			}
+		}
+		if (AnswerColour2 != FlagColour2)
+		{
+			if (ActiveColour != AnswerColour2)
+			{
+				ColourButtons[AnswerColour2].OnInteract();
+				yield return new WaitForSeconds(.1f);
+			}
+			switch (ActiveFlag)
+			{
+				case 0:
+					HorizontalFlag[1].OnInteract();
+					yield return new WaitForSeconds(.1f);
+					break;
+				case 1:
+					VerticalFlag[1].OnInteract();
+					yield return new WaitForSeconds(.1f);
+					break;
+				case 2:
+					SwedishFlag[UnityEngine.Random.Range(4, 6)].OnInteract();
+					yield return new WaitForSeconds(.1f);
+					break;
+				default:
+					NorwegianFlag[UnityEngine.Random.Range(4, 6)].OnInteract();
+					yield return new WaitForSeconds(.1f);
+					break;
+			}
+		}
+		if (AnswerColour3 != FlagColour3 && ActiveFlag != 2)
+		{
+			if (ActiveColour != AnswerColour3)
+			{
+				ColourButtons[AnswerColour3].OnInteract();
+				yield return new WaitForSeconds(.1f);
+			}
+			switch (ActiveFlag)
+			{
+				case 0:
+					HorizontalFlag[2].OnInteract();
+					yield return new WaitForSeconds(.1f);
+					break;
+				case 1:
+					VerticalFlag[2].OnInteract();
+					yield return new WaitForSeconds(.1f);
+					break;
+				default:
+					NorwegianFlag[UnityEngine.Random.Range(6, 14)].OnInteract();
+					yield return new WaitForSeconds(.1f);
+					break;
+			}
+		}
+		if (_ChadRomania)
+			while ((Bomb.GetTime() >= 60 && !Bomb.GetFormattedTime().Contains('0') && !Bomb.GetFormattedTime().Contains('5')) || (Bomb.GetTime() < 60 && !Bomb.GetFormattedTime().Remove(2).Contains('0') && !Bomb.GetFormattedTime().Remove(2).Contains('5'))) yield return true;
+		else if (SubmitTime != 10)
+			while ((Bomb.GetTime() >= 60 && !Bomb.GetFormattedTime().Contains(SubmitTime.ToString()[0])) || (Bomb.GetTime() < 60 && !Bomb.GetFormattedTime().Remove(2).Contains(SubmitTime.ToString()[0]))) yield return true;
+		else
+			while((Bomb.GetTime() >= 60 && !Bomb.GetFormattedTime().Contains(Bomb.GetSerialNumberNumbers().Last().ToString()[0])) || (Bomb.GetTime() < 60 && !Bomb.GetFormattedTime().Remove(2).Contains(Bomb.GetSerialNumberNumbers().Last().ToString()[0]))) yield return true;
+		FlagTopSubmit.OnInteract();
+	}
 }
